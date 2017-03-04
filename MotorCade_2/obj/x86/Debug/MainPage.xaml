@@ -1,0 +1,223 @@
+﻿<Page
+    x:Class="MotorCade_2.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MotorCade_2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Width="766">
+    <Page.Resources>
+        <Style x:Key="Zhbt" TargetType="Button">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style x:Key="Zhbt1" TargetType="Button">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style x:Key="Enbt" TargetType="Button">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="FontFamily" Value="Microsoft JhengHei"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="RequestedTheme" Value="Light"/>
+        </Style>
+        <Style x:Key="TextBlock" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property= "Foreground" Value="#FFA5C92D"/>
+        </Style>
+        <Style x:Key="TextBox" TargetType="TextBox">
+            <Setter Property="Width" Value="49"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:ConnectionId='1' x:Name="wideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="641" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:ConnectionId='2' x:Name="narrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="inputPanel.Orientation" Value="Vertical"/>
+                        <Setter Target="inputButton.Margin" Value="0,4,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:ConnectionId='3' x:Name="TitleText" Text="高        峰        车        队" Margin="0" Grid.Row="0" FontFamily="微软雅黑" FontSize="20"  Style="{StaticResource HeaderTextBlockStyle}" Foreground="#FFE66464"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Server IP:" Margin="5,5,5,5" FontSize="{ThemeResource TextStyleExtraLargeFontSize}" VerticalAlignment="Center" Height="38"/>
+            <TextBox x:ConnectionId='42' x:Name="ServerIP" Text="192.168.1.100" Margin="5,5,5,5" Width="230" FontSize="{ThemeResource TextStyleExtraLargeFontSize}" Height="42"/>
+            <TextBlock Text="Port:" Margin="5,5,5,5" FontSize="{ThemeResource TextStyleExtraLargeFontSize}" VerticalAlignment="Center"/>
+            <TextBox x:ConnectionId='43' x:Name="ServerPort" Text="5866" Margin="5" Width="100" FontSize="{ThemeResource TextStyleExtraLargeFontSize}" Height="42"/>
+            <Button x:ConnectionId='44' Content="连接" Style="{StaticResource Zhbt}" Margin="5,0,5,5" Background="LightGray"                       VerticalAlignment="Bottom" />
+            <Button x:ConnectionId='45' Content="断开" Style="{StaticResource Zhbt}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"                          />
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,5">
+                <Button x:ConnectionId='36'  Content="Start" Style="{StaticResource Enbt}"                      />
+                <Button x:ConnectionId='37'  Content="Enable" Style="{StaticResource Enbt}"                      />
+                <Button x:ConnectionId='38'  Content="GoHome1" Style="{StaticResource Enbt}"                      />
+                <Button x:ConnectionId='39'  Content="GoHome2" Style="{StaticResource Enbt}"                      />
+                <MediaElement x:ConnectionId='40' x:Name="Button_Effect_Element" Margin="4,0" Width="42" Height="42" Source="Button_Effect.wav" HorizontalAlignment="Right" AutoPlay="False"/>
+                <MediaElement x:ConnectionId='41' x:Name="Send_Effect_Element" Margin="4,0" Width="42" Height="42" Source="Send_Effect.wav" HorizontalAlignment="Right" AutoPlay="False"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,0">
+                <Button x:ConnectionId='32'  Content="Exit" Style="{StaticResource Enbt}"                      />
+                <Button x:ConnectionId='33'  Content="Disable" Style="{StaticResource Enbt}"                      />
+                <Button x:ConnectionId='34'  Content="Recover1" Style="{StaticResource Enbt}"                      />
+                <Button x:ConnectionId='35'  Content="Recover2" Style="{StaticResource Enbt}"                      />
+            </StackPanel>
+            <StackPanel Grid.Row="2" Margin="5" Orientation="Horizontal">
+                <TextBox x:ConnectionId='30' x:Name="command" Text="" Margin="5" Width="600" FontSize="{ThemeResource TextStyleExtraLargeFontSize}" Height="42"/>
+                <Button x:ConnectionId='31' Content="发送" Style="{StaticResource Zhbt}" Margin="20,5"                          />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Height="480">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Button Content="启动" Style="{StaticResource Zhbt}"/>
+                    <Button Content="前进" Style="{StaticResource Zhbt}"/>
+                    <Button Content="停止" Style="{StaticResource Zhbt}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button Content="沙土" Style="{StaticResource Zhbt}"/>
+                    <Button Content="前进" Style="{StaticResource Zhbt}"/>
+                    <Button Content="停止" Style="{StaticResource Zhbt}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Button Content="纵坡" Style="{StaticResource Zhbt}"/>
+                    <Button Content="前进" Style="{StaticResource Zhbt}"/>
+                    <Button Content="停止" Style="{StaticResource Zhbt}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal">
+                    <Button Content="绕树" Style="{StaticResource Zhbt}"/>
+                    <Button Content="前进" Style="{StaticResource Zhbt}"/>
+                    <Button Content="停止" Style="{StaticResource Zhbt}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="LightGray" HorizontalAlignment="Stretch" Height="300" Width="382">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Canvas x:ConnectionId='16' x:Name="Pcanvas" Grid.Column="0" Background="{ThemeResource ApplicationForegroundThemeBrush}" Margin="10,10,10,10" Width="282">
+                        <Line X1="0" X2="280" Y1="140" Y2="140" Stroke="Red" StrokeThickness="1" StrokeDashArray="8,2"/>
+                        <Line X1="140" X2="140" Y1="0" Y2="280" Stroke="Red" StrokeThickness="1" StrokeDashArray="8,2"/>
+                        <StackPanel Canvas.Left="138" Canvas.Top="90" Height="100">
+                            <StackPanel.RenderTransform>
+                                <TranslateTransform x:ConnectionId='24' x:Name="bottomstackpanel" X="0" Y="0"/>
+                            </StackPanel.RenderTransform>
+                            <StackPanel x:ConnectionId='25' x:Name="Pstackpanel" Height="100" Width="4" RenderTransformOrigin="0.5,0.5">
+                                <StackPanel.RenderTransform>
+                                    <RotateTransform x:ConnectionId='26' x:Name="rotatepanel" Angle="0"/>
+                                    <!--CenterX="2" CenterY="50"-->
+                                </StackPanel.RenderTransform>
+                                <Rectangle x:ConnectionId='27' x:Name="HeadRectangle" Fill="Yellow" Height="6" Width="4" />
+                                <Rectangle x:ConnectionId='28' x:Name="Srectangle" Fill="#FF2A57EE" Height="88" Width="4" RadiusX="50" RadiusY="50"/>
+                                <Rectangle x:ConnectionId='29' x:Name="TailRectangle" Fill="#FF077607" Height="6" Width="4" />
+                            </StackPanel>
+                        </StackPanel>
+                        <TextBlock x:ConnectionId='20' x:Name="AngleText" Canvas.Left="5" Canvas.Top="6" Text="Angle:"  Style="{StaticResource TextBlock}"/>
+                        <TextBox x:ConnectionId='21' x:Name="AngleBox" Text="0" Canvas.Left="50" Canvas.Top="0" Style="{StaticResource TextBox}" InputScope="Default"/>
+                        <TextBlock x:ConnectionId='22' x:Name="SpeedText" Canvas.Left="170" Canvas.Top="6" Text="Speed:" Style="{StaticResource TextBlock}"/>
+                        <TextBox x:ConnectionId='23' x:Name="SpeedBox" Text="0" Canvas.Left="212" Canvas.Top="0" Style="{StaticResource TextBox}"/>
+                        <!--TextBox x:Name="DirectionBox" Text="正向" Canvas.Left="114" Canvas.Top="245" Style="{StaticResource TextBox}"/-->
+                    </Canvas>
+                    <Canvas x:ConnectionId='17' x:Name="SpeedCanvas" Grid.Column="1" Margin="0,10" Width="70" Background="Black">
+                        <Line X1="0" X2="70" Y1="140" Y2="140" Stroke="Red" StrokeThickness="0.5" StrokeDashArray="8,2"/>
+                        <Line X1="35" X2="35" Y1="0" Y2="280" Stroke="Red" StrokeThickness="0.5" StrokeDashArray="8,2"/>
+                        <!--TextBlock x:Name="SpeedText" Canvas.Left="0" Canvas.Top="6" Text="Speed:" Style="{StaticResource TextBlock}"/-->
+                        <StackPanel Canvas.Left="33" Canvas.Top="140" Width="4" Height="140">
+                            <Rectangle x:ConnectionId='18' x:Name="Prectangle" Fill="#FF20D371" Height="100" Width="4" RadiusX="40" RadiusY="40">
+                                <Rectangle.RenderTransform>
+                                    <ScaleTransform x:ConnectionId='19' x:Name="scalerectangle" ScaleY="1"/>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </StackPanel>
+                    </Canvas>
+                </Grid>
+                <Grid Grid.Row="1" Background="White" HorizontalAlignment="Stretch" Height="180">
+                    <Canvas>
+                        <!-- x:Name="arrow"  X1="191" X2="191" Y1="158" Y2="50" Grid.Row="0" Margin="0" Stroke="Blue" StrokeThickness="5" StrokeStartLineCap="Square" StrokeEndLineCap="Triangle"/-->
+                        <Button x:ConnectionId='6' x:Name="ClockWise" Content="顺时" Canvas.Left="5" Canvas.Top="5"                         Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='7' x:Name="AnticlockWise" Content="逆时" Canvas.Left="5" Canvas.Top="62"                             Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='8' x:Name="turnbackButton" Content="换向" Canvas.Left="5" Canvas.Top="119" Style="{StaticResource Zhbt1}"                  />
+                        <Button x:ConnectionId='9' x:Name="Foreward" Content="前移" Canvas.Left="195" Canvas.Top="5"                        Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='10' x:Name="Backward" Content="后移" Canvas.Left="195" Canvas.Top="119"                         Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='11' x:Name="SpeedUp" Content="加速" Canvas.Left="290" Canvas.Top="5"                       Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='12' x:Name="SpeedDown" Content="减速" Canvas.Left="290" Canvas.Top="119"                          Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='13' x:Name="LeftWard" Content="左移" Canvas.Left="100" Canvas.Top="62"                        Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='14' x:Name="RightWard" Content="右移" Canvas.Left="290" Canvas.Top="62"                         Style="{StaticResource Zhbt1}"/>
+                        <Button x:ConnectionId='15' x:Name="ResetButton" Content="复位" Canvas.Left="195" Canvas.Top="62"                           Style="{StaticResource Zhbt1}"/>
+                    </Canvas>
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="4">
+            <!--TextBlock x:Name="RobotStatus"  Text ="Robot Status:" SelectionHighlightColor="{x:Null}" Foreground="#FFF50C0C"/-->
+            <Canvas Background="Black" Margin="2,0">
+                <TextBlock x:ConnectionId='5' x:Name="Parameters" Text="NULL" Foreground="White" />
+            </Canvas>
+        </Grid>
+        <TextBlock x:ConnectionId='4' x:Name="StatusText" Text="Connection Message" TextWrapping="Wrap" FontSize="20"  Grid.Row="5" Margin="2" Style="{StaticResource HeaderTextBlockStyle}" Foreground="#FFC91515"/>
+    </Grid>
+
+</Page>
+
+
